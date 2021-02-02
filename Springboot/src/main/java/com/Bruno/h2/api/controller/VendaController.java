@@ -1,5 +1,7 @@
 package com.Bruno.h2.api.controller;
 
+import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Bruno.h2.api.dao.VendaRepo;
+import com.Bruno.h2.api.dao.VendedorRepo;
 import com.Bruno.h2.api.model.Venda;
 
 @RestController
@@ -17,13 +20,25 @@ public class VendaController {
 	@Autowired
 	private VendaRepo repo;
 	
+	@Autowired
+	private VendedorRepo Vrepo;
+	
 	@PostMapping("/gerarVenda")
 	public String gerarVenda(@RequestBody Venda venda)
 	{
 		try 
 		{
-			repo.save(venda);
-			return "Venda Concluida";
+			if (Vrepo.existsById(venda.vendedorId))
+			{
+				java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());		
+				venda.data = date;
+				repo.save(venda);
+				return "Venda Concluida";
+			}
+			else
+			{
+				return "Vendedor não existe";
+			}
 		} 
 		catch (Exception e)
 		{
@@ -49,6 +64,9 @@ public class VendaController {
 	{
 		try 
 		{
+//			repo.findAll().stream()
+//			.filter(x -> x.);
+//			
 			List<Venda> vendas = repo.findAll();
 			
 			return repo.findAll();

@@ -1,12 +1,8 @@
 package com.Bruno.h2.api.model;
 
-import java.sql.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,29 +12,13 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Venda {
+public class Vendedor {
+
 	@Id
 	@GeneratedValue
-	public long vendaId;
 	public long vendedorId;
 	public String vendedorNome;
-	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-	public Date data;
-	public float valor;
 	
-
-	public Date getData() {
-		return data;
-	}
-	public void setData(Date data) {
-		this.data = data;
-	}
-	public long getVendaId() {
-		return vendaId;
-	}
-	public void setVendaId(long vendaId) {
-		this.vendaId = vendaId;
-	}
 	public long getVendedorId() {
 		return vendedorId;
 	}
@@ -51,10 +31,5 @@ public class Venda {
 	public void setVendedorNome(String vendedorNome) {
 		this.vendedorNome = vendedorNome;
 	}
-	public float getValor() {
-		return valor;
-	}
-	public void setValor(float valor) {
-		this.valor = valor;
-	}
+
 }
