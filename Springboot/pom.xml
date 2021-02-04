@@ -14,7 +14,7 @@
 	<name>springbootH2</name>
 	<description>stage 6 is without description</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -25,7 +25,16 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		<dependency>
+    		<groupId>org.springframework</groupId>
+   		    <artifactId>spring-test</artifactId>
+    		<scope>test</scope>
+		</dependency>
+		<dependency>
+  	 		 <groupId>io.rest-assured</groupId>
+   			 <artifactId>spring-mock-mvc</artifactId>
+    		<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -37,6 +46,11 @@
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		<dependency>
+    		<groupId>org.jinq</groupId>
+    		<artifactId>jinq-jpa</artifactId>
+    		<version>1.8.32</version>
+  		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>

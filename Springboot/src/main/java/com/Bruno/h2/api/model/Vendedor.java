@@ -19,6 +19,13 @@ public class Vendedor {
 	public long vendedorId;
 	public String vendedorNome;
 	
+	public Vendedor() {}
+	
+	public Vendedor(long vendedorId, String vendedorNome) {
+		super();
+		this.vendedorId = vendedorId;
+		this.vendedorNome = vendedorNome;
+	}
 	public long getVendedorId() {
 		return vendedorId;
 	}

@@ -19,15 +19,16 @@ public class VendedorController
 	{
 		try 
 		{
-			if (Vrepo.existsById(vendedor.vendedorId))
-			{
-				return "Vendedor ja registrador";
-			}
-			else
-			{
-				Vrepo.save(vendedor);
-				return "Vendedor Registrado com sucesso";
-			}
+			Vrepo.save(vendedor);
+			return "Vendedor Registrado com sucesso";
+//			if (Vrepo.existsById(vendedor.vendedorId))
+//			{
+//				return "Vendedor ja registrador";
+//			}
+//			else
+//			{
+//				
+//			}
 		} 
 		catch (Exception e)
 		{

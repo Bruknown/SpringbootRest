@@ -8,11 +8,9 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.Bruno.h2.api.model.Venda;
 import com.Bruno.h2.api.model.Vendedor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -22,49 +20,34 @@ import static io.restassured.module.mockmvc.RestAssuredMockMvc.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-public class VendaControllerTest {
-	
+public class VendedorControllerTest {
 	@Autowired
 	private MockMvc mvc;
 	
 	
 	@Before
 	public void setup() {
-		standaloneSetup(new Venda(1, "Bruno", 100), new VendedorController());
+		standaloneSetup(new Vendedor(1, "Bruno"), new VendedorController());
 		
 	}
 	
 	@Test
 	public void test() {
+
 		try 
 		{
-			MvcResult result1 = mvc.perform(MockMvcRequestBuilders
+			mvc.perform(MockMvcRequestBuilders
 					.post("/gerarVendedor")
 					.content(asJsonString(new Vendedor(1, "Bruno")))
 					.contentType(MediaType.APPLICATION_JSON)
-					.accept(MediaType.APPLICATION_JSON))
-			.andReturn();
-			
-			String content1 = result1.getResponse().getContentAsString();
-			
-			System.out.println(content1);
-			
-			MvcResult result2 = mvc.perform(MockMvcRequestBuilders
-					.post("/gerarVenda")
-					.content(asJsonString(new Venda(1, "Bruno", 100)))
-					.contentType(MediaType.APPLICATION_JSON)
-					.accept(MediaType.APPLICATION_JSON))
-			.andReturn();
-			
-			String content2 = result2.getResponse().getContentAsString();
-			
-			System.out.println(content2);
+					.accept(MediaType.APPLICATION_JSON));
 		} 
 		catch (Exception e) 
 		{
 			e.printStackTrace();
 		}
 	}
+	
 	public static String asJsonString(final Object obj) {
 	    try {
 	        return new ObjectMapper().writeValueAsString(obj);

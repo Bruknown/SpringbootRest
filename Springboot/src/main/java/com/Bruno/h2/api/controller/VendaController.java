@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.Bruno.h2.api.dao.VendaRepo;
 import com.Bruno.h2.api.dao.VendedorRepo;
 import com.Bruno.h2.api.model.Venda;
+import org.jinq.*;
 
 @RestController
 public class VendaController {
@@ -64,11 +65,7 @@ public class VendaController {
 	{
 		try 
 		{
-//			repo.findAll().stream()
-//			.filter(x -> x.);
-//			
-			List<Venda> vendas = repo.findAll();
-			
+//			stream().where(c -> c)
 			return repo.findAll();
 		}
 		catch (Exception e)

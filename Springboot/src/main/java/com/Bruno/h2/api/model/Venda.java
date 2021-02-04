@@ -26,7 +26,14 @@ public class Venda {
 	public Date data;
 	public float valor;
 	
-
+	public Venda() {}
+	
+	public Venda(long vendedorId, String vendedorNome, float valor) {
+		super();
+		this.vendedorId = vendedorId;
+		this.vendedorNome = vendedorNome;
+		this.valor = valor;
+	}
 	public Date getData() {
 		return data;
 	}
