@@ -25,7 +25,7 @@ public class Venda {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long vendaId;
 
-	@Column(name = "vendedorId", nullable = false, unique = true)
+	@Column(name = "vendedorId", nullable = false)
 	private long vendedorId;
 
 	@Column(name = "vendedorNome", nullable = false, length = 10)
